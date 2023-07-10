@@ -1,0 +1,30 @@
+class Solution {
+    // Function to reverse every sub-array group of size k.
+    void reverseInGroups(ArrayList<Integer> arr, int n, int k) {
+        if (k > n) {
+            // If k is greater than the size of the array, reverse the entire array.
+            reverse(arr, 0, n - 1);
+        } else {
+            int t = 0;
+            while (t + k < n) {
+                // Reverse sub-arrays of size k.
+                reverse(arr, t, t + k - 1);
+                t = t + k;
+            }
+            int rest = n / k;
+            // Reverse the remaining elements at the end if any.
+            reverse(arr, k * rest, n - 1);
+        }
+    }
+
+    public static void reverse(ArrayList<Integer> arr, int i, int j) {
+        // Function to reverse elements between indices i and j.
+        while (i < j) {
+            int temp = arr.get(i);
+            arr.set(i, arr.get(j));
+            arr.set(j, temp);
+            i++;
+            j--;
+        }
+    }
+}
