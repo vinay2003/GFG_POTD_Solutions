@@ -1,0 +1,27 @@
+class Solution{
+    public void zigZag(int a[], int n){
+        // Code your solution here.
+        for(int i = 0; i < n-1; i++) {
+            if(i%2 == 0) 
+            {
+                if(a[i] > a[i+1])
+                {
+                    swap(a,i,i+1);
+                }
+            }
+                
+            else {
+                if(a[i] < a[i+1]) {
+                    swap(a,i,i+1);
+                }
+            }
+            
+        }
+    }
+    
+    public static void swap(int arr[], int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}
