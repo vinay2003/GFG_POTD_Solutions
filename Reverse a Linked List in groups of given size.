@@ -1,0 +1,24 @@
+class Solution {
+    static Node reverse(Node head, int k) {
+        Node current = head;
+        Node prev = null;
+        Node next = null;
+        int count = 0;
+
+        // Reverse the first 'k' nodes of the linked list
+        while (current != null && count < k) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+            count++;
+        }
+
+        // Recursively reverse the rest of the linked list in groups
+        if (next != null) {
+            head.next = reverse(next, k);
+        }
+
+        return prev;
+    }
+}
