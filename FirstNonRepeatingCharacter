@@ -1,0 +1,20 @@
+public class FirstNonRepeatingCharacter {
+    public static char findFirstNonRepeatingCharacter(String str) {
+        Queue<Character> queue = new LinkedList<>();
+        int[] charFrequency = new int[26]; // Assuming the input only contains lowercase letters
+        
+        for (char ch : str.toCharArray()) {
+            queue.add(ch);
+            charFrequency[ch - 'a']++;
+        }
+        
+        while (!queue.isEmpty()) {
+            char firstChar = queue.peek();
+            if (charFrequency[firstChar - 'a'] == 1) {
+                return firstChar;
+            }
+            queue.remove();
+        }
+        
+        return '$'; // No non-repeating character found
+    }
